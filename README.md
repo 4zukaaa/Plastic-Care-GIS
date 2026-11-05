@@ -560,7 +560,7 @@ Simbolkan kolom itu, bukan jumlah mentah.
 
 ---
 
-## Tiga peringatan untuk presentasi
+## Note 
 
 **1. Hotspot ≠ titik paling banyak sampah.** Hotspot adalah clustering nilai
 tinggi yang signifikan secara statistik. Satu tumpukan besar yang dikelilingi
