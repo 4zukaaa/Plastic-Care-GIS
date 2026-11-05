@@ -89,7 +89,6 @@ banyak belum tentu hotspot. Kalau tetangganya bersih, itu outlier terisolasi,
 bukan hotspot. Inilah perbedaan mendasar antara peta konsentrasi (KDE) dan
 analisis hotspot statistik (Gi\*). Jangan samakan keduanya saat presentasi.
 
-![Perbandingan Getis-Ord Gi* dan Local Moran's I pada grid heksagon](docs/img/gi-star-vs-local-moran.jpg)
 
 *Gi\* (kiri) hanya mengenal tiga keluaran: hotspot, coldspot, tidak signifikan —
 sel diklasifikasikan bersama lingkungannya. Local Moran's I (kanan) memecah
@@ -135,8 +134,6 @@ $$
 Keluaran $G_i^{*}$ **sudah berupa z-score** — tidak perlu distandardisasi lagi.
 Implementasinya ada di `hotspot.getis_ord_gi_star()`, ditulis baris per baris
 mengikuti rumus di atas supaya bisa diperiksa, bukan memanggil fungsi kotak hitam.
-
-![Nilai Gi* mentah dibandingkan z-score](docs/img/gi-star-value-vs-zscore.jpg)
 
 *Dua peta dari data yang sama. Kiri: nilai Gi mentah (0,005–0,086) — nyaris
 seluruh wilayah tampak berwarna, dan pembacanya tidak tahu mana yang berarti.
@@ -192,7 +189,6 @@ Matriks ini **tidak dibakukan baris** (row-standardized), sesuai konvensi Gi\*.
 | ≤ −1,96 | 95% | coldspot signifikan | −2 |
 | ≤ −2,58 | 99% | coldspot sangat signifikan | −3 |
 
-![Contoh peta Gi* dengan skema warna dan legenda baku](docs/img/gi-star-legend-standard.jpg)
 
 *Tujuh kelas `gi_bin` yang dihasilkan pipeline, dipetakan dengan konvensi baku:
 gradasi merah untuk hotspot (makin gelap makin tinggi kepercayaannya), kuning
@@ -533,10 +529,7 @@ menyimbolkan:
 3. Di legenda, tulis parameternya: ukuran grid, ambang jarak, variabel input,
    dan status koreksi FDR. Ambil dari `hotspot_gi_star_metadata.json`.
 
-**Jangan mengarang skema warna sendiri.** Contoh kesalahan yang nyata terjadi di
-publikasi:
 
-![Peta Gi* dengan skema warna yang menyesatkan](docs/img/gi-star-legend-pitfall.jpg)
 
 *Di peta ini merah berarti **coldspot** 99% dan hijau berarti **hotspot** 99% —
 kebalikan dari konvensi. Pembaca yang melirik sekilas akan menyimpulkan persis
@@ -584,20 +577,3 @@ bukan jumlah selnya.
 
 ---
 
-## Catatan sumber gambar
-
-Empat gambar di `docs/img/` adalah materi acuan dari literatur dan bahan ajar
-pihak lain, dipakai di sini sebatas alat bantu penjelasan internal tim:
-
-| Berkas | Isi | Status |
-|---|---|---|
-| `gi-star-vs-local-moran.jpg` | Gi\* vs Local Moran's I pada grid heksagon | materi acuan |
-| `gi-star-value-vs-zscore.jpg` | nilai Gi mentah vs z-score | materi acuan |
-| `gi-star-legend-standard.jpg` | contoh peta Gi\* tingkat distrik, legenda baku | materi acuan |
-| `gi-star-legend-pitfall.jpg` | contoh skema warna yang menyesatkan | materi acuan |
-
-**Sebelum masuk laporan, skripsi, atau publikasi:** lacak sumber asli tiap
-gambar dan cantumkan sitasi lengkapnya, atau ganti dengan gambar hasil peta
-PLASTI-CARE sendiri. Begitu pipeline berjalan di data asli, ketiga gambar
-pertama sebetulnya bisa direproduksi dari data lo sendiri — dan itu jauh lebih
-kuat daripada meminjam ilustrasi orang lain.
